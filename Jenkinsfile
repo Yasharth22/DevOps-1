@@ -2,18 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Install Node.js') {
-            steps {
-                echo 'Installing Node.js and npm...'
-                sh '''
-                    apt update -y
-                    apt install -y nodejs npm
-                    node -v
-                    npm -v
-                '''
-            }
-        }
-
         stage('Hello World Test') {
             steps {
                 echo 'Running Hello World...'
