@@ -2,19 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                echo 'Cloning repository...'
-                git branch: 'main', url: 'https://github.com/Yasharth22/DevOps-1.git'
-            }
-        }
-
         stage('Install Node.js') {
             steps {
                 echo 'Installing Node.js and npm...'
                 sh '''
-                    sudo apt update -y
-                    sudo apt install -y nodejs npm
+                    apt update -y
+                    apt install -y nodejs npm
                     node -v
                     npm -v
                 '''
@@ -23,7 +16,7 @@ pipeline {
 
         stage('Hello World Test') {
             steps {
-                echo 'Creating and running Hello World Node.js app...'
+                echo 'Running Hello World...'
                 sh '''
                     echo "console.log('Hello World from Jenkins Node.js Pipeline!')" > hello.js
                     node hello.js
